@@ -21,11 +21,11 @@
 
     <TextView
         android:id="@+id/loginTextLoginPage"
-        android:layout_width="228dp"
-        android:layout_height="63dp"
+        android:layout_width="283dp"
+        android:layout_height="97dp"
         android:autoSizeTextType="uniform"
         android:gravity="center_horizontal"
-        android:text="LOGIN"
+        android:text="ANSWER SECURITY QUESTION"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,12 +34,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.258" />
 
-    <EditText
+    <TextView
         android:id="@+id/securityQuestionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Username/Email"
+        android:textSize="20dp"
+        android:hint="Security Question"
         android:inputType="textPersonName"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/SecurityQuestionAnswer"
@@ -52,10 +53,10 @@
 
     <EditText
         android:id="@+id/SecurityQuestionAnswer"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Security Question Answer"
         android:textColorHint="@color/blue"
         android:inputType="textPersonName"
         android:textColor="@color/blue"
@@ -68,13 +69,13 @@
 
     <Button
         android:id="@+id/confirmButtonSecurity"
-        android:layout_width="143dp"
-        android:layout_height="49dp"
-        android:text="Login"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Confirm"
         app:layout_constraintBottom_toTopOf="@+id/changePasswordButtonSecurity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:background="@drawable/cutom_rounded_corners"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SecurityQuestionAnswer"
         app:layout_constraintVertical_bias="0.576" />
@@ -84,20 +85,22 @@
         android:layout_width="143dp"
         android:layout_height="55dp"
         android:background="@drawable/cutom_rounded_corners"
-        android:text="Forgot Password"
+        android:text="Change Password"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/wrongAnswerTextViewSecurity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmButtonSecurity"
-        app:layout_constraintVertical_bias="0.668" />
+        app:layout_constraintVertical_bias="0.668"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/wrongAnswerTextViewSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Username Or Email Doesnt Exist"
+        android:text="Wrong Answer"
         android:textColor="#FF1744"
         app:layout_constraintBottom_toTopOf="@+id/passwordsDontMatchTextviewSecurity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Incorrect Password"
+        android:text="Passwords Dont Match"
         android:textColor="#FF1744"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

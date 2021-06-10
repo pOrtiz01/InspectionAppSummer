@@ -73,11 +73,11 @@ public class Register extends AppCompatActivity {
         buildings.add("Creekside");
         nameInput = (EditText) findViewById(R.id.nameInputRegisterPage);
         emailInput = (EditText) findViewById(R.id.emailInputRegisterPage);
-        phoneInput = (EditText) findViewById(R.id.phoneInputRegisterPage);
-        userInput = (EditText) findViewById(R.id.usernameInputRegisterPage);
+        phoneInput = (EditText) findViewById(R.id.phoneInputChangeLogin);
+        userInput = (EditText) findViewById(R.id.usernameInputChangeLogin);
         addressInput = (EditText) findViewById(R.id.addressInputRegisterPage);
-        passwordInput = (EditText) findViewById(R.id.passwordInputRegisterPage);
-        confirmPasswordInput = (EditText) findViewById(R.id.confirmPasswordInputRegisterPage);
+        passwordInput = (EditText) findViewById(R.id.passwordInputChangeLogin);
+        confirmPasswordInput = (EditText) findViewById(R.id.confirmPasswordInputChangeLogin);
 
         wrongPassword = (TextView) findViewById(R.id.passwordsDontMatchChangeLogin);
         duplicateField = (TextView) findViewById(R.id.duplicateFieldChangeLogin);

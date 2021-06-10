@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Login extends AppCompatActivity {
+public class SecurityQuestions extends AppCompatActivity {
 
     private Button HomePage;
     private Button LoginButton;
@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity {
         HomePage=(Button) findViewById(R.id.backButtonSecurity);
         HomePage.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                returnMainPageActivity();
+                returnLogin();
             }
         });
         LoginButton=(Button) findViewById(R.id.confirmButtonSecurity);
@@ -80,15 +80,14 @@ public class Login extends AppCompatActivity {
         }
 
     }
-    public void returnMainPageActivity(){
+    public void returnLogin(){
         errorStateHelper.reset();
-        Intent intent= new Intent(this, com.example.myapplication.MainActivity.class);
+        Intent intent= new Intent(this, com.example.myapplication.Login.class);
         startActivity(intent);
     }
     public void Login(){
         currentUser.userName = userNameInputVar;
         currentUser.email = userNameInputVar;
-
 
         Intent intent= new Intent(this, com.example.myapplication.homePage.class);
         startActivity(intent);
@@ -178,5 +177,4 @@ public class Login extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    }
+}

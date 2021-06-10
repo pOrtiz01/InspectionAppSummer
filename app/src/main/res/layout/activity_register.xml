@@ -47,13 +47,13 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/phoneInputRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/phoneInputChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameInputRegisterPage" />
 
     <EditText
-        android:id="@+id/phoneInputRegisterPage"
+        android:id="@+id/phoneInputChangeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -72,25 +72,25 @@
         android:hint="Address"
         android:inputType="textPersonName"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/usernameInputRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/usernameInputChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneInputRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneInputChangeLogin" />
 
     <EditText
-        android:id="@+id/passwordInputRegisterPage"
+        android:id="@+id/passwordInputChangeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/confirmPasswordInputRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/confirmPasswordInputChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameInputRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameInputChangeLogin" />
 
     <EditText
-        android:id="@+id/confirmPasswordInputRegisterPage"
+        android:id="@+id/confirmPasswordInputChangeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -99,7 +99,7 @@
         app:layout_constraintBottom_toTopOf="@+id/SubmitButtonChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInputRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordInputChangeLogin" />
 
     <Button
         android:id="@+id/SubmitButtonChangeLogin"
@@ -111,7 +111,7 @@
         app:layout_constraintBottom_toTopOf="@+id/duplicateFieldChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInputRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInputChangeLogin" />
 
     <TextView
         android:id="@+id/passwordsDontMatchChangeLogin"
@@ -153,13 +153,13 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordsDontMatchChangeLogin" />
 
     <EditText
-        android:id="@+id/usernameInputRegisterPage"
+        android:id="@+id/usernameInputChangeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/passwordInputRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/passwordInputChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressInputRegisterPage" />
@@ -187,7 +187,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneInputRegisterPage"
+        app:layout_constraintTop_toBottomOf="@+id/phoneInputChangeLogin"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
