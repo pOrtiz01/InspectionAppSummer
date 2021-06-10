@@ -21,6 +21,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.732" />
 
+    <Button
+        android:id="@+id/EditProfileButtonSettingsPage"
+        android:layout_width="262dp"
+        android:layout_height="115dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Edit Profile"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.587"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="171dp"

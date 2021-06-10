@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.EditProfile;
 import com.example.myapplication.R;
 import com.example.myapplication.Register;
 import com.example.myapplication.databinding.FragmentNotificationsBinding;
@@ -22,6 +23,7 @@ import com.example.myapplication.errorStateHelper;
 
 public class NotificationsFragment extends Fragment {
     private Button registerButton;
+    private Button editProfileButton;
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
 
@@ -47,6 +49,12 @@ public class NotificationsFragment extends Fragment {
                 goToRegisterPage();
             }
         });
+        editProfileButton=(Button) root.findViewById(R.id.EditProfileButtonSettingsPage);
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToEditProfile();
+            }
+        });
 
         return root;
     }
@@ -59,6 +67,11 @@ public class NotificationsFragment extends Fragment {
     public void goToRegisterPage(){
         errorStateHelper.reset();
         Intent intent2 = new Intent(getActivity(), Register.class);
+        startActivity(intent2);
+    }
+    public void goToEditProfile(){
+        errorStateHelper.reset();
+        Intent intent2 = new Intent(getActivity(), EditProfile.class);
         startActivity(intent2);
     }
 }
