@@ -1,0 +1,141 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuildingInspection">
+
+
+    <TableLayout
+        android:id="@+id/tableBuild1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintVertical_bias=".1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+
+                android:layout_width="350px"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textSize="20dp" />
+
+            <TextView
+
+                android:layout_width="365px"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="OK"
+                android:textSize="20dp" />
+
+            <TextView
+
+                android:layout_width="365px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="NOT OK"
+                android:textSize="20dp" />
+
+
+
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tableBuild2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:id="@+id/row1Building"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/firstRowTextBuilding"
+                android:layout_width="350px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Smoke Alarm"
+                android:textSize="20dp" />
+
+            <CheckBox
+                android:id="@+id/firstOkBuilding"
+                android:layout_width="365px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <CheckBox
+                android:id="@+id/firstNotOkBuilding"
+                android:layout_width="365px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <EditText
+        android:layout_width="389dp"
+        android:layout_height="163dp"
+        android:hint="COMMENTS"
+        app:layout_constraintBottom_toTopOf="@+id/BuildingSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableBuild2">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/BuildingSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Submit"
+        android:textColor="@color/blue"
+        app:backgroundTint="@color/cream"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
+
+    <TextView
+        android:id="@+id/checkBoxErrorBuilding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="All Fields Must be Filled In Correctly"
+        android:textColor="#FF1744"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BuildingSubmit"
+        app:layout_constraintVertical_bias="0.618" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
