@@ -61,7 +61,7 @@ public class Register extends AppCompatActivity {
                 returnMainPageActivity();
             }
         });
-        RegisterButton = (Button) findViewById(R.id.registerButtonRegisterPage);
+        RegisterButton = (Button) findViewById(R.id.SubmitButtonChangeLogin);
         RegisterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 checkError();
@@ -79,9 +79,9 @@ public class Register extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.passwordInputRegisterPage);
         confirmPasswordInput = (EditText) findViewById(R.id.confirmPasswordInputRegisterPage);
 
-        wrongPassword = (TextView) findViewById(R.id.passwordsDontMatchRegisterPage);
-        duplicateField = (TextView) findViewById(R.id.duplicateFieldRegisterPage);
-        emptyField = (TextView) findViewById(R.id.emptyFieldsRegisterPage);
+        wrongPassword = (TextView) findViewById(R.id.passwordsDontMatchChangeLogin);
+        duplicateField = (TextView) findViewById(R.id.duplicateFieldChangeLogin);
+        emptyField = (TextView) findViewById(R.id.emptyFieldsChangeLogin);
 
         addressDropdown=(Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(Register.this, android.R.layout.simple_spinner_item,buildings);

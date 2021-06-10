@@ -96,51 +96,51 @@
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/registerButtonRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/SubmitButtonChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputRegisterPage" />
 
     <Button
-        android:id="@+id/registerButtonRegisterPage"
+        android:id="@+id/SubmitButtonChangeLogin"
         android:layout_width="177dp"
         android:layout_height="68dp"
         android:background="@drawable/cutom_rounded_corners"
         android:text="Register"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/duplicateFieldRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/duplicateFieldChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInputRegisterPage" />
 
     <TextView
-        android:id="@+id/passwordsDontMatchRegisterPage"
+        android:id="@+id/passwordsDontMatchChangeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Passwords Dont Match, Try Again"
         android:textColor="#FF1744"
-        app:layout_constraintBottom_toTopOf="@+id/emptyFieldsRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/emptyFieldsChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/duplicateFieldRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/duplicateFieldChangeLogin" />
 
     <TextView
-        android:id="@+id/duplicateFieldRegisterPage"
+        android:id="@+id/duplicateFieldChangeLogin"
         android:layout_width="232dp"
         android:layout_height="28dp"
         android:gravity="center"
         android:text="Username Already Exists, Try Again"
         android:textColor="#FF1744"
-        app:layout_constraintBottom_toTopOf="@+id/passwordsDontMatchRegisterPage"
+        app:layout_constraintBottom_toTopOf="@+id/passwordsDontMatchChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButtonRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/SubmitButtonChangeLogin" />
 
     <TextView
-        android:id="@+id/emptyFieldsRegisterPage"
+        android:id="@+id/emptyFieldsChangeLogin"
         android:layout_width="252dp"
         android:layout_height="19dp"
         android:gravity="center"
@@ -150,7 +150,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordsDontMatchRegisterPage" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordsDontMatchChangeLogin" />
 
     <EditText
         android:id="@+id/usernameInputRegisterPage"
