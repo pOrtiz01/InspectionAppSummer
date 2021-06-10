@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -29,28 +30,22 @@ import java.util.Iterator;
 public class BuildingInspection extends Fragment {
     private CheckBox row1Ok;
     private CheckBox row1NotOk;
-    private CheckBox row2Ok;
-    private CheckBox row2NotOk;
-    private CheckBox row3Ok;
-    private CheckBox row3NotOk;
-    private CheckBox row4Ok;
-    private CheckBox row4NotOk;
-    private CheckBox row5Ok;
-    private CheckBox row5NotOk;
 
-    private Button submit;
+
+    private Button next;
 
     private TextView checkBoxError;
+    private TextView FieldText;
+
+    private EditText comments;
 
     private ArrayList<Integer> values;
+    private ArrayList<String> fields;
+    private ArrayList<String> commentList;
 
-    private int question=1;
-    private TableLayout table;
-    private TableRow row1;
-    private TableRow row2;
-    private TableRow row3;
-    private TableRow row4;
-    private TableRow row5;
+    private int question=0;
+
+
 
     Connection connect;
     String ConnectionResult = "";
@@ -61,37 +56,30 @@ public class BuildingInspection extends Fragment {
         View rootView=inflater.inflate(R.layout.fragment_building_inspection3, container, false);
 
         values = new ArrayList<>(Arrays.asList(-1,-1,-1,-1,-1));
+        fields = new ArrayList<>(Arrays.asList("Smoke Alarm","HVAC","Lobby Cleanliness","Gym Cleanliness","Lights"));
+        commentList = new ArrayList<>(Arrays.asList("","","","",""));
 
+        FieldText=(TextView) rootView.findViewById(R.id.firstRowTextBuilding);
 
-        //row1Ok=(CheckBox) rootView.findViewById(R.id.firstOkBuilding);
-       // row1NotOk=(CheckBox) rootView.findViewById(R.id.firstNotOkBuilding);
-       // row2Ok=(CheckBox) rootView.findViewById(R.id.secondOkBuilding);
-        //row2NotOk=(CheckBox) rootView.findViewById(R.id.secondNotOkBuilding);
-       // row3Ok=(CheckBox) rootView.findViewById(R.id.thirdOkBuilding);
-//        row4Ok=(CheckBox) rootView.findViewById(R.id.fourthOkBuilding);
-        //row4NotOk=(CheckBox) rootView.findViewById(R.id.fourthNotOkBuilding);
-       // row5Ok=(CheckBox) rootView.findViewById(R.id.fifthOkBuilding);
-       // row5NotOk=(CheckBox) rootView.findViewById(R.id.fifthNotOkBuilding);
+        row1Ok=(CheckBox) rootView.findViewById(R.id.firstOkBuilding);
+        row1NotOk=(CheckBox) rootView.findViewById(R.id.firstNotOkBuilding);
 
-        //table = (TableLayout) rootView.findViewById(R.id.tableLayoutBuilding);
-        //row1 = (TableRow) rootView.findViewById(R.id.row1Building);
-        //row2 = (TableRow) rootView.findViewById(R.id.row2Building);
-        //row3 = (TableRow) rootView.findViewById(R.id.row3Building);
-        //row4 = (TableRow) rootView.findViewById(R.id.row4Building);
-        //row5 = (TableRow) rootView.findViewById(R.id.row5Building);
-        //row2.setVisibility(View.INVISIBLE);
-        //row3.setVisibility(View.INVISIBLE);
-       // row4.setVisibility(View.INVISIBLE);
-        //row5.setVisibility(View.INVISIBLE);
+        comments=(EditText) rootView.findViewById(R.id.commentBuilding);
 
-        submit = (Button) rootView.findViewById(R.id.BuildingSubmit);
-        submit.setOnClickListener(new View.OnClickListener() {
+        next = (Button) rootView.findViewById(R.id.BuildingNext);
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submit();
+                if(question==fields.size()-1) {
+                    submit();
+                }
+                else{
+                    next();
+                }
+
             }
         });
-       /*
+        FieldText.setText(fields.get(0));
         checkBoxError=(TextView) rootView.findViewById(R.id.checkBoxErrorBuilding);
         if(errorStateHelper.checkBuildingError){
             checkBoxError.setVisibility(View.VISIBLE);
@@ -99,13 +87,12 @@ public class BuildingInspection extends Fragment {
         else{
             checkBoxError.setVisibility(View.INVISIBLE);
         }
-*/
+
 
         return rootView;
     }
 
     public void setArray(int index, CheckBox one, CheckBox two) {
-
         if (one.isChecked() && !two.isChecked()) {
             values.set(index, 1);
         }
@@ -117,23 +104,39 @@ public class BuildingInspection extends Fragment {
         }
 
     }
-    public void submit() {
+    public void storeComment(int index,EditText comment){
+        commentList.set(index,comment.getText().toString());
+    }
+    public void next(){
+       setArray(question,row1Ok,row1NotOk);
+        if(values.get(question)==-1){
+            checkBoxError.setVisibility(View.VISIBLE);
+            row1NotOk.setChecked(false);
+            row1Ok.setChecked(false);
 
-        setArray(0, row1Ok, row1NotOk);
-        setArray(1, row2Ok, row2NotOk);
-        setArray(2, row3Ok, row3NotOk);
-        setArray(3, row4Ok, row4NotOk);
-        setArray(4, row5Ok, row5NotOk);
-
-        for (int i = 0; i < 5; i++) {
-            if (values.get(i) == -1) {
-                errorStateHelper.checkBuildingError = true;
+        }
+        else{
+            checkBoxError.setVisibility(View.INVISIBLE);
+            row1NotOk.setChecked(false);
+            row1Ok.setChecked(false);
+            storeComment(question,comments);
+            comments.setText("");
+            question++;
+            FieldText.setText(fields.get(question));
+            if(question==fields.size()-1) {
+                next.setText("SUBMIT");
             }
         }
-        if (errorStateHelper.checkBuildingError) {
+    }
+    public void submit() {
+        setArray(question,row1Ok,row1NotOk);
+        if(values.get(question)==-1){
             checkBoxError.setVisibility(View.VISIBLE);
+            row1NotOk.setChecked(false);
+            row1Ok.setChecked(false);
         }
-        else {
+        else{
+            storeComment(question,comments);
             try {
 
                 ConnectionHelper connectionHelper = new ConnectionHelper();
@@ -141,19 +144,22 @@ public class BuildingInspection extends Fragment {
                 if (connect != null) {
                     Statement st = connect.createStatement();
                     st.executeUpdate("INSERT INTO BuildingInspection VALUES (" + values.get(0) + ", "
-                            + values.get(1) + ", " + values.get(2) + ", " + values.get(3) + ", " + values.get(4) + ")");
+                            + values.get(1) + ", " + values.get(2) + ", " + values.get(3) + ", " + values.get(4) +", \'" + commentList.get(0) +"\', \'" + commentList.get(1) +"\', \'" + commentList.get(2) +"\', \'" + commentList.get(3) +"\', \'" + commentList.get(4) + "\')");
                 } else {
                     ConnectionResult = "Check Connection";
                 }
                 connect.close();
             } catch (Exception ex) {
                 System.out.println("ERROR");
+
             }
 
             Intent intent = new Intent(getActivity(), com.example.myapplication.homePage.class);
             startActivity(intent);
-
         }
 
+
+
     }
+
 }
