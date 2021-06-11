@@ -7,6 +7,32 @@
     android:background="@drawable/settings_page"
     tools:context=".EditProfile">
 
+    <EditText
+        android:id="@+id/securityAnswerEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Security Answer"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/SubmitButtonChangeLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/securityQuestionEditProfile" />
+
+    <EditText
+        android:id="@+id/securityQuestionEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Security Question"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/securityAnswerEditProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInputChangeLogin" />
+
     <Button
         android:id="@+id/backButtonChangeLoginPage"
         android:layout_width="wrap_content"
@@ -19,8 +45,10 @@
         android:textColor="@color/blue"
         app:backgroundTint="@color/cream"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
     />
+
+    ]]>
 
     <EditText
         android:id="@+id/nameInputChangeLogin"
@@ -30,12 +58,11 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/emailInputChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintTop_toBottomOf="@+id/ChangeLoginText" />
 
     <EditText
         android:id="@+id/emailInputChangeLogin"
@@ -46,7 +73,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/phoneInputChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameInputChangeLogin" />
 
@@ -54,12 +81,12 @@
         android:id="@+id/phoneInputChangeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/addressChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailInputChangeLogin" />
 
@@ -83,11 +110,12 @@
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/SubmitButtonChangeLogin"
+        app:layout_constraintBottom_toTopOf="@+id/securityQuestionEditProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputChangeLogin" />
+
 
     <Button
         android:id="@+id/SubmitButtonChangeLogin"
@@ -98,10 +126,8 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/duplicateFieldChangeLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInputChangeLogin" />
-
+        app:layout_constraintTop_toBottomOf="@+id/securityAnswerEditProfile" />
 
     <TextView
         android:id="@+id/passwordsDontMatchChangeLogin"
@@ -119,7 +145,7 @@
     <TextView
         android:id="@+id/duplicateFieldChangeLogin"
         android:layout_width="248dp"
-        android:layout_height="107dp"
+        android:layout_height="85dp"
         android:gravity="center"
         android:text="Username Already Exists, Try Again"
         android:textColor="#FF1744"
@@ -176,12 +202,8 @@
         android:textColor="@color/cream"
         android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
-        app:layout_constraintStart_toEndOf="@+id/backButtonChangeLoginPage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

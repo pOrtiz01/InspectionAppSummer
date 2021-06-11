@@ -29,6 +29,8 @@ public class EditProfile extends AppCompatActivity {
     private EditText passwordInput;
     private EditText passwordConfirmInput;
     private Spinner addressInput;
+    private EditText securityQuestionInput;
+    private EditText securityAnswerInput;
     private TextView wrongPassword;
     private TextView duplicateField;
     private TextView emptyField;
@@ -40,6 +42,8 @@ public class EditProfile extends AppCompatActivity {
     private String passwordInputVar;
     private String passwordConfirmInputVar;
     private String addressInputVar;
+    private String securityQuestionInputVar;
+    private String securityAnswerInputVar;
 
     List<String> buildings= new ArrayList<String>();
 
@@ -65,6 +69,8 @@ public class EditProfile extends AppCompatActivity {
         passwordInput=(EditText) findViewById(R.id.passwordInputChangeLogin);
         passwordConfirmInput=(EditText) findViewById(R.id.confirmPasswordInputChangeLogin);
         addressInput=(Spinner) findViewById(R.id.addressChangeLogin);
+        securityQuestionInput = (EditText) findViewById(R.id.securityQuestionEditProfile);
+        securityAnswerInput = (EditText) findViewById(R.id.securityAnswerEditProfile);
 
         wrongPassword=(TextView) findViewById(R.id.passwordsDontMatchChangeLogin);
         duplicateField=(TextView) findViewById(R.id.duplicateFieldChangeLogin);
@@ -108,7 +114,8 @@ public class EditProfile extends AppCompatActivity {
         else {
             emptyField.setVisibility(View.INVISIBLE);
         }
-        if (errorStateHelper.emailExistsChangeLogin || errorStateHelper.phoneExistsChangeLogin || errorStateHelper.usernameExistsChangeLogin) {
+        if (errorStateHelper.emailExistsChangeLogin || errorStateHelper.phoneExistsChangeLogin
+                || errorStateHelper.usernameExistsChangeLogin) {
             duplicateField.setVisibility(View.VISIBLE);
         }
         else {
@@ -128,10 +135,14 @@ public class EditProfile extends AppCompatActivity {
         usernameInputVar=usernameInput.getText().toString();
         passwordInputVar=passwordInput.getText().toString();
         passwordConfirmInputVar=passwordConfirmInput.getText().toString();
+        securityQuestionInputVar = securityQuestionInput.getText().toString();
+        securityAnswerInputVar = securityAnswerInput.getText().toString();
         checkPasswordMatch();
         checkDuplicates();
         blankFields();
-        if(errorStateHelper.passwordErrorChangeLogin || errorStateHelper.usernameExistsChangeLogin || errorStateHelper.emailExistsChangeLogin || errorStateHelper.phoneExistsChangeLogin || errorStateHelper.blankFieldsChangeLogin){
+        if(errorStateHelper.passwordErrorChangeLogin || errorStateHelper.usernameExistsChangeLogin
+                || errorStateHelper.emailExistsChangeLogin || errorStateHelper.phoneExistsChangeLogin
+                || errorStateHelper.blankFieldsChangeLogin){
             // dont register error
 
             Intent intent2 = new Intent(this, com.example.myapplication.EditProfile.class);
@@ -161,7 +172,8 @@ public class EditProfile extends AppCompatActivity {
                 currentUser.userName = usernameInputVar;
 
                 st.executeUpdate("INSERT INTO TenantData VALUES (" + "\'" + nameInputVar + "\', \'"
-                        + usernameInputVar + "\', \'" + emailInputVar + "\', \'" + phoneInputVar + "\', \'" + addressInputVar + "\', \'" + passwordInputVar + "\')");
+                        + usernameInputVar + "\', \'" + emailInputVar + "\', \'" + phoneInputVar + "\', \'"
+                        + addressInputVar + "\', \'" + passwordInputVar + "\', \'" + securityQuestionInputVar + "\', \'" + securityAnswerInputVar + "\')");
 
                 st.close();
 
@@ -192,6 +204,8 @@ public class EditProfile extends AppCompatActivity {
                     usernameInput.setText(rs.getString("Username"));
                     emailInput.setText(rs.getString("Email"));
                     phoneInput.setText(rs.getString("Phone_Number"));
+                    securityQuestionInput.setText(rs.getString("Security_Question"));
+                    securityAnswerInput.setText(rs.getString("Security_Answer"));
                 }
                 st.close();
             }
@@ -215,7 +229,8 @@ public class EditProfile extends AppCompatActivity {
     public void blankFields() {
         if (nameInputVar.equals("") || emailInputVar.equals("") || phoneInputVar.equals("")
                 || usernameInputVar.equals("") || errorStateHelper.selectedAddress==false
-                || passwordInputVar.equals("") || passwordConfirmInputVar.equals(""))  {
+                || passwordInputVar.equals("") || passwordConfirmInputVar.equals("")
+                || securityQuestionInputVar.equals("") || securityAnswerInputVar.equals(""))  {
             errorStateHelper.blankFieldsChangeLogin = true;
         }
         else{

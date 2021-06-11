@@ -21,6 +21,9 @@ public class errorStateHelper {
     public static boolean selectedAddress=false;
     public static boolean checkBuildingError=false;
 
+    public static boolean passwordsDontMatchErrorSecurity=false;
+    public static boolean incorrectAnswerErrorSecurity=false;
+
 
     public static boolean buildingOrUnit=false;
     public static String building = "";

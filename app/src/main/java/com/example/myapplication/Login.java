@@ -62,17 +62,17 @@ public class Login extends AppCompatActivity {
         UsernameInput=(EditText) findViewById(R.id.securityQuestionTextView);
         PasswordInput= (EditText) findViewById(R.id.SecurityQuestionAnswer);
 
-        usernameEmailDoesntExist=(TextView) findViewById(R.id.wrongAnswerTextViewSecurity);
+        usernameEmailDoesntExist=(TextView) findViewById(R.id.errorMessageSecurity);
         incorrectPassword=(TextView) findViewById(R.id.passwordsDontMatchTextviewSecurity);
 
         if(errorStateHelper.usernameEmailErrorLogin ){
             usernameEmailDoesntExist.setVisibility(View.VISIBLE);
-            forgotButton.setVisibility(View.VISIBLE);
         }
         else{
             usernameEmailDoesntExist.setVisibility(View.INVISIBLE);
             if(errorStateHelper.incorrectPasswordLogin ){
                 incorrectPassword.setVisibility(View.VISIBLE);
+                forgotButton.setVisibility(View.VISIBLE);
             }
             else{
                 incorrectPassword.setVisibility(View.INVISIBLE);
@@ -95,6 +95,7 @@ public class Login extends AppCompatActivity {
 
     }
     public void securityQuestions(){
+        errorStateHelper.reset();
         Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
         startActivity(intent);
     }
@@ -149,22 +150,28 @@ public class Login extends AppCompatActivity {
         }
     }
     public void checkPassword() {
+        userNameInputVar=UsernameInput.getText().toString();
         try {
             ConnectionHelper connectionHelper = new ConnectionHelper();
             connect = connectionHelper.connectionClass();
-            ResultSet rs = null;
             if (connect != null) {
                 Statement st = connect.createStatement();
-                rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
+                ResultSet rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
                 if (!rs.next()) {
                     rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + userNameInputVar + "\'");
                 }
 
                 while (rs.next()) {
                     if (rs.getString("Password").equals(passwordInputVar)) {
+                        System.out.println("PASSWORDS MATCH");
+                        System.out.println("STORED: " + rs.getString("Password"));
+                        System.out.println("INPUTTED: " + passwordInputVar);
                         errorStateHelper.incorrectPasswordLogin = false;
                     }
                     else{
+                        System.out.println("NO Match");
+                        System.out.println("STORED: " + rs.getString("Password"));
+                        System.out.println("INPUTTED: " + passwordInputVar);
                         errorStateHelper.incorrectPasswordLogin = true;
                     }
                 }

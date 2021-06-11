@@ -11,13 +11,21 @@
         android:id="@+id/backButtonSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/cutom_rounded_corners"
         android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/untitled_1__1_" />
 
     <TextView
         android:id="@+id/loginTextLoginPage"
@@ -27,108 +35,70 @@
         android:gravity="center_horizontal"
         android:text="ANSWER SECURITY QUESTION"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/securityQuestionTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintTop_toBottomOf="@+id/backButtonSecurity" />
 
     <TextView
         android:id="@+id/securityQuestionTextView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textSize="20dp"
         android:hint="Security Question"
         android:inputType="textPersonName"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/SecurityQuestionAnswer"
+        android:textColorHint="@color/blue"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/inputSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:textColorHint="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTextLoginPage"
-        app:layout_constraintVertical_bias="0.188" />
+        app:layout_constraintTop_toBottomOf="@+id/loginTextLoginPage" />
+
 
     <EditText
-        android:id="@+id/SecurityQuestionAnswer"
+        android:id="@+id/inputSecurity"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Security Question Answer"
-        android:textColorHint="@color/blue"
-        android:inputType="textPersonName"
+        android:hint="Enter Email"
+
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/confirmButtonSecurity"
+        android:textColorHint="@color/blue"
+
+        app:layout_constraintBottom_toTopOf="@+id/confirmButtonSecurityPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/securityQuestionTextView"
-        app:layout_constraintVertical_bias="0.197" />
+        app:layout_constraintTop_toBottomOf="@+id/securityQuestionTextView" />
 
-    <Button
-        android:id="@+id/confirmButtonSecurity"
-        android:layout_width="150dp"
-        android:layout_height="52dp"
-        android:background="@drawable/cutom_rounded_corners"
-        android:text="Confirm"
-        app:layout_constraintBottom_toTopOf="@+id/changePasswordButtonSecurity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SecurityQuestionAnswer"
-        app:layout_constraintVertical_bias="0.576" />
-
-    <Button
-        android:id="@+id/changePasswordButtonSecurity"
-        android:layout_width="143dp"
-        android:layout_height="55dp"
-        android:background="@drawable/cutom_rounded_corners"
-        android:text="Change Password"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/wrongAnswerTextViewSecurity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmButtonSecurity"
-        app:layout_constraintVertical_bias="0.668"
-        tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/wrongAnswerTextViewSecurity"
+        android:id="@+id/errorMessageSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Wrong Answer"
         android:textColor="#FF1744"
-        app:layout_constraintBottom_toTopOf="@+id/passwordsDontMatchTextviewSecurity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changePasswordButtonSecurity"
-        app:layout_constraintVertical_bias="0.256" />
-
-    <TextView
-        android:id="@+id/passwordsDontMatchTextviewSecurity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Passwords Dont Match"
-        android:textColor="#FF1744"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wrongAnswerTextViewSecurity"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmButtonSecurityPage" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+
+    <Button
+        android:id="@+id/confirmButtonSecurityPage"
+        android:layout_width="143dp"
+        android:layout_height="55dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Confirm Email"
+        app:layout_constraintBottom_toTopOf="@+id/errorMessageSecurity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/untitled_1__1_" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSecurity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

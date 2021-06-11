@@ -85,7 +85,7 @@
         android:layout_height="55dp"
         android:background="@drawable/cutom_rounded_corners"
         android:text="Forgot Password"
-        app:layout_constraintBottom_toTopOf="@+id/wrongAnswerTextViewSecurity"
+        app:layout_constraintBottom_toTopOf="@+id/errorMessageSecurity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         app:layout_constraintVertical_bias="0.668" />
 
     <TextView
-        android:id="@+id/wrongAnswerTextViewSecurity"
+        android:id="@+id/errorMessageSecurity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -117,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wrongAnswerTextViewSecurity"
+        app:layout_constraintTop_toBottomOf="@+id/errorMessageSecurity"
         app:layout_constraintVertical_bias="0.463" />
 
     <ImageView

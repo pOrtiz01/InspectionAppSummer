@@ -12,23 +12,33 @@ import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SecurityQuestions extends AppCompatActivity {
 
     private Button HomePage;
-    private Button LoginButton;
-    private Button forgotButton;
+    private Button confirmButton;
+    private Button changePasswordButton;
+    private Button confirmEmailButton;
 
-    private EditText UsernameInput;
-    private EditText PasswordInput;
+    private EditText passwordInput;
+    private EditText confirmPasswordInput;
+    private EditText securityAnswer;
+    private EditText emailInput;
 
-    private TextView usernameEmailDoesntExist;
-    private TextView incorrectPassword;
+    private TextView securityQuestion;
+    private TextView incorrectAnswer;
+    private TextView passwordsDontMatch;
+    private TextView emailDoesNotExist;
 
-    private String userNameInputVar;
     private String passwordInputVar;
+    private String confirmPasswordInputVar;
+    private String answerInputVar;
+    private String emailInputVar;
+
+    private String currentAnswer;
+    private String currentQuestion;
+
 
     Connection connect;
     String ConnectionResult = "";
@@ -38,46 +48,63 @@ public class SecurityQuestions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_security_questions);
         HomePage=(Button) findViewById(R.id.backButtonSecurity);
         HomePage.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 returnLogin();
             }
         });
-        LoginButton=(Button) findViewById(R.id.confirmButtonSecurity);
-        LoginButton.setOnClickListener(new View.OnClickListener(){
+        confirmButton=(Button) findViewById(R.id.confirmButtonSecurityPage);
+        confirmButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                checkError();
+                checkAnswer();
 
             }
         });
-        forgotButton=(Button) findViewById(R.id.changePasswordButtonSecurity);
-        forgotButton.setOnClickListener(new View.OnClickListener(){
+        changePasswordButton=(Button) findViewById(R.id.confirmButtonSecurityPage);
+        changePasswordButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                securityQuestions();
+                checkPassword();
             }
         });
-        forgotButton.setVisibility(View.INVISIBLE);
-        UsernameInput=(EditText) findViewById(R.id.securityQuestionTextView);
-        PasswordInput= (EditText) findViewById(R.id.SecurityQuestionAnswer);
-
-        usernameEmailDoesntExist=(TextView) findViewById(R.id.wrongAnswerTextViewSecurity);
-        incorrectPassword=(TextView) findViewById(R.id.passwordsDontMatchTextviewSecurity);
-
-        if(errorStateHelper.usernameEmailErrorLogin ){
-            usernameEmailDoesntExist.setVisibility(View.VISIBLE);
-            forgotButton.setVisibility(View.VISIBLE);
-        }
-        else{
-            usernameEmailDoesntExist.setVisibility(View.INVISIBLE);
-            if(errorStateHelper.incorrectPasswordLogin ){
-                incorrectPassword.setVisibility(View.VISIBLE);
+        confirmEmailButton=(Button) findViewById(R.id.confirmButtonSecurityPage);
+        confirmEmailButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                confirmEmail();
             }
-            else{
-                incorrectPassword.setVisibility(View.INVISIBLE);
-            }
-        }
+        });
+
+
+
+        passwordInput=(EditText) findViewById(R.id.inputSecurity);
+        confirmPasswordInput=(EditText) findViewById(R.id.inputSecurity) ;
+        securityAnswer=(EditText) findViewById(R.id.inputSecurity);
+        emailInput=(EditText) findViewById(R.id.inputSecurity);
+
+        passwordsDontMatch=(TextView) findViewById(R.id.errorMessageSecurity);
+        incorrectAnswer=(TextView) findViewById(R.id.errorMessageSecurity);
+        securityQuestion=(TextView) findViewById(R.id.securityQuestionTextView);
+        emailDoesNotExist=(TextView) findViewById(R.id.errorMessageSecurity);
+
+        //Stage 1
+        securityQuestion.setVisibility(View.INVISIBLE);
+        emailDoesNotExist.setText("Email Does Not Exist");
+        emailDoesNotExist.setVisibility(View.INVISIBLE);
+
+
+    }
+    public void getData(){
+
+    }
+    public void checkPassword(){
+
+    }
+    public void confirmEmail(){
+        emailInputVar=emailInput.getText().toString();
+    }
+    public void checkAnswer(){
+        answerInputVar=securityAnswer.getText().toString();
 
     }
     public void returnLogin(){
@@ -85,96 +112,6 @@ public class SecurityQuestions extends AppCompatActivity {
         Intent intent= new Intent(this, com.example.myapplication.Login.class);
         startActivity(intent);
     }
-    public void Login(){
-        currentUser.userName = userNameInputVar;
-        currentUser.email = userNameInputVar;
 
-        Intent intent= new Intent(this, com.example.myapplication.homePage.class);
-        startActivity(intent);
 
-    }
-    public void securityQuestions(){
-        Intent intent= new Intent(this, com.example.myapplication.SecurityQuestions.class);
-        startActivity(intent);
-    }
-    public void checkError(){
-        userNameInputVar=UsernameInput.getText().toString();
-        passwordInputVar=PasswordInput.getText().toString();
-        checkUsernameEmail();
-        checkPassword();
-        if (errorStateHelper.usernameEmailErrorLogin ||  errorStateHelper.incorrectPasswordLogin) {
-            Intent intent2 = new Intent(this, com.example.myapplication.Login.class);
-            startActivity(intent2);
-        }
-        else{
-            Login();
-        }
-    }
-    public void checkUsernameEmail() {
-        try {
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            connect = connectionHelper.connectionClass();
-            if (connect != null) {
-                Statement st = connect.createStatement();
-
-                ResultSet rs = st.executeQuery("SELECT * FROM TenantData");
-
-                while (rs.next()) {
-                    if (rs.getString("Username").equals(userNameInputVar)) {
-                        errorStateHelper.usernameEmailErrorLogin = false;
-                        break;
-                        //ERROR STUFF
-                    }
-                    else{
-                        if (rs.getString("Email").equals(userNameInputVar)) {
-                            errorStateHelper.usernameEmailErrorLogin = false;
-                            break;
-                            //ERROR STUFF
-                        }
-                        else{
-                            errorStateHelper.usernameEmailErrorLogin = true;
-                        }
-                    }
-
-                }
-                st.close();
-            }
-            else {
-                ConnectionResult = "Check Connection";
-            }
-            connect.close();
-        } catch (Exception ex) {
-            System.out.println("ERROR");
-        }
-    }
-    public void checkPassword() {
-        try {
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            connect = connectionHelper.connectionClass();
-            ResultSet rs = null;
-            if (connect != null) {
-                Statement st = connect.createStatement();
-                rs = st.executeQuery("SELECT * FROM TenantData WHERE Username = \'" + userNameInputVar + "\'");
-                if (!rs.next()) {
-                    rs = st.executeQuery("SELECT * FROM TenantData WHERE Email = \'" + userNameInputVar + "\'");
-                }
-
-                while (rs.next()) {
-                    if (rs.getString("Password").equals(passwordInputVar)) {
-                        errorStateHelper.incorrectPasswordLogin = false;
-                    }
-                    else{
-                        errorStateHelper.incorrectPasswordLogin = true;
-                    }
-                }
-                st.close();
-            }
-            else {
-                ConnectionResult = "Check Connection";
-            }
-            connect.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
