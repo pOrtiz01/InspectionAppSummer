@@ -12,7 +12,7 @@ public class createInspection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_inspection);
         Button addQuestionButton=(Button) findViewById(R.id.addQuestionCreate);
-        Button sub
+        //Button sub
 
     }
 }
