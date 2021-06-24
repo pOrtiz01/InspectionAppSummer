@@ -34,6 +34,13 @@ public class errorStateHelper {
     public static boolean selectedBuildingInspectionError=false;
     public static boolean selectedTypeInspectionError=false;
 
+    public static String currentInspection = "";
+    public static String currentBuilding = "";
+
+    public static boolean startedCreation=false;
+    public static boolean incorrectInputCreation=true;
+    public static boolean blankQuestionCreation=true;
+
     public static void reset() {
         passwordErrorRegister = false;
         usernameExistsRegister = false;
@@ -52,5 +59,10 @@ public class errorStateHelper {
         incorrectAnswerSecurity=false;
 
         stageSecurity=1;
+
+        startedCreation=false;
+        incorrectInputCreation=true;
+        blankQuestionCreation=true;
+
     }
 }

@@ -14,20 +14,15 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.ConnectionHelper;
 import com.example.myapplication.Maintenance;
 import com.example.myapplication.R;
-import com.example.myapplication.Register;
-import com.example.myapplication.UnitInspection;
 import com.example.myapplication.createInspection;
 import com.example.myapplication.databinding.FragmentDashboardBinding;
 import com.example.myapplication.errorStateHelper;
-import com.example.myapplication.homePage;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,9 +30,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
-    private Button unitInspectionButton;
-    private Button buildingInspectionButton;
     private Button customInspectionButton;
+    private Button createInspectionButton;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
     private Spinner buildingDropdown;
@@ -73,25 +67,25 @@ public class DashboardFragment extends Fragment {
         buildings= new ArrayList<>();
         types= new ArrayList<>();
 
-        unitInspectionButton=(Button) root.findViewById(R.id.unitDailyInspectionButton);
-        unitInspectionButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                unitInspection();
-            }
-        });
-        buildingInspectionButton=(Button) root.findViewById(R.id.buildingDailyInspectionButton);
-        buildingInspectionButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                BuildingInspection();
-            }
-        });
-        customInspectionButton=(Button) root.findViewById(R.id.customInspectionButton);
+
+        customInspectionButton=(Button) root.findViewById(R.id.startInspectionButton);
         customInspectionButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("INSPECTION: " + typeInputVar);
+                errorStateHelper.currentBuilding = buildingInputVar;
+                errorStateHelper.currentInspection = typeInputVar;
+
+                Intent intent= new Intent(getActivity(), com.example.myapplication.Maintenance.class);
+                startActivity(intent);
+
+            }
+        });
+        createInspectionButton=(Button) root.findViewById(R.id.createInspectionButton);
+        createInspectionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
 
-                //typeDropdown.setVisibility(View.VISIBLE);
+                Intent intent= new Intent(getActivity(), com.example.myapplication.createInspection.class);
+                startActivity(intent);
 
             }
         });

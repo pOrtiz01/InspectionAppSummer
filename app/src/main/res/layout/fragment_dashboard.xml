@@ -13,59 +13,46 @@
 
 
     <Button
-        android:id="@+id/buildingDailyInspectionButton"
+        android:id="@+id/startInspectionButton"
         android:layout_width="177dp"
         android:layout_height="68dp"
         android:background="@drawable/cutom_rounded_corners"
-        android:text="Daily Building Inspection"
+        android:text="Start Inspection"
         android:textSize="15dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/unitDailyInspectionButton"
+
+        app:layout_constraintBottom_toTopOf="@+id/createInspectionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/typeDropDownInspection" />
 
     <Button
-        android:id="@+id/customInspectionButton"
+        android:id="@+id/createInspectionButton"
         android:layout_width="177dp"
         android:layout_height="68dp"
+        android:layout_marginBottom="88dp"
         android:background="@drawable/cutom_rounded_corners"
-        android:text="Custom Inspection"
-        android:textSize="15dp"
+        android:text="Create Inspection"
 
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unitDailyInspectionButton" />
-
-    <Button
-        android:id="@+id/unitDailyInspectionButton"
-        android:layout_width="177dp"
-        android:layout_height="68dp"
-        android:background="@drawable/cutom_rounded_corners"
-        android:text="Daily Unit Inspection"
-        android:textSize="20dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/customInspectionButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buildingDailyInspectionButton" />
+        app:layout_constraintTop_toBottomOf="@+id/startInspectionButton" />
 
     <Spinner
         android:id="@+id/buildingDropDownInspection"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/typeDropDownInspection"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Spinner
         android:id="@+id/typeDropDownInspection"
@@ -73,12 +60,11 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/startInspectionButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintTop_toBottomOf="@+id/buildingDropDownInspection" />
 
     <TextView
         android:id="@+id/textView5"
