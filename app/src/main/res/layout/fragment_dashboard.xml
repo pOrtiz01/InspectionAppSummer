@@ -13,21 +13,21 @@
 
 
     <Button
-        android:id="@+id/startInspectionButton"
+        android:id="@+id/deleteInspectionButton"
         android:layout_width="177dp"
         android:layout_height="68dp"
         android:background="@drawable/cutom_rounded_corners"
         android:text="Start Inspection"
         android:textSize="15dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/createInspectionButton"
+        app:layout_constraintBottom_toTopOf="@+id/confirmInspectionDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeDropDownInspection" />
+        app:layout_constraintTop_toBottomOf="@+id/typeDropDownDelete" />
 
     <Button
-        android:id="@+id/createInspectionButton"
+        android:id="@+id/confirmInspectionDelete"
         android:layout_width="177dp"
         android:layout_height="68dp"
         android:layout_marginBottom="88dp"
@@ -39,32 +39,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startInspectionButton" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteInspectionButton" />
 
     <Spinner
-        android:id="@+id/buildingDropDownInspection"
+        android:id="@+id/buildingDropDownDelete"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/typeDropDownInspection"
+        app:layout_constraintBottom_toTopOf="@+id/typeDropDownDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Spinner
-        android:id="@+id/typeDropDownInspection"
+        android:id="@+id/typeDropDownDelete"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/startInspectionButton"
+        app:layout_constraintBottom_toTopOf="@+id/deleteInspectionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buildingDropDownInspection" />
+        app:layout_constraintTop_toBottomOf="@+id/buildingDropDownDelete" />
 
     <TextView
         android:id="@+id/textView5"

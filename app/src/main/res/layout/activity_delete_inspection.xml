@@ -2,8 +2,82 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentDashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteInspection">
+    android:background="@drawable/settings_page"
+    android:scaleX=".95"
+    android:scaleY=".95"
+    android:translationY="15dp"
+    tools:context=".ui.dashboard.DashboardFragment">
 
+
+    <Button
+        android:id="@+id/deleteInspectionButton"
+        android:layout_width="177dp"
+        android:layout_height="68dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Delete Inspection"
+        android:textSize="15dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/confirmInspectionDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeDropDownDelete" />
+
+    <Button
+        android:id="@+id/confirmInspectionDelete"
+        android:layout_width="177dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="88dp"
+        android:background="@drawable/cutom_rounded_corners"
+        android:text="Confirm Delete"
+
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteInspectionButton" />
+
+    <Spinner
+        android:id="@+id/buildingDropDownDelete"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/typeDropDownDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Spinner
+        android:id="@+id/typeDropDownDelete"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/deleteInspectionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buildingDropDownDelete" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="181dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="DELETE INSPECTIONS"
+        android:textColor="@color/cream"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
