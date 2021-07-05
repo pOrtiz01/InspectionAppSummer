@@ -43,6 +43,7 @@ public class Maintenance extends AppCompatActivity {
     private TextView checkBoxError;
     private TextView FieldText;
     private TextView title;
+    private TextView section;
 
     private EditText comments;
 
@@ -50,6 +51,7 @@ public class Maintenance extends AppCompatActivity {
 
 
     private ArrayList<String> fields;
+    private ArrayList<String> sectionNames;
 
     private ImageView test;
 
@@ -79,10 +81,12 @@ public class Maintenance extends AppCompatActivity {
 
 
         fields = new ArrayList<>();
+        sectionNames = new ArrayList<>();
 
 
         FieldText=(TextView) findViewById(R.id.firstRowTextBuilding);
         title = (TextView) findViewById(R.id.inspectionNameMaintenance);
+        section=(TextView) findViewById(R.id.sectionNameMaintenance);
         title.setText(errorStateHelper.currentInspection);
 
         workOrderSwitch = (Switch) findViewById(R.id.wordOrderSwitchBuildingInspection);
@@ -97,7 +101,8 @@ public class Maintenance extends AppCompatActivity {
         comments=(EditText) findViewById(R.id.commentBuilding);
         getQuestions();
         getInspectionID();
-
+        getSection();
+        section.setText(sectionNames.get(0));
         takePicture = (Button) findViewById(R.id.takePictureMaint);
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +196,7 @@ public class Maintenance extends AppCompatActivity {
     }
     public void displayQuestion(){
         FieldText.setText(fields.get(questionNumber));
+        section.setText(sectionNames.get(questionNumber));
         questionNumber++;
         row1Ok.setChecked(false);
         row1NotOk.setChecked(false);
@@ -268,6 +274,29 @@ public class Maintenance extends AppCompatActivity {
 
                 while (rs.next()) {
                     fields.add(rs.getString("Question"));
+                }
+                st.close();
+            }
+            else {
+                ConnectionResult = "Check Connection";
+            }
+            connect.close();
+        } catch (Exception ex) {
+            System.out.println("Get questions error");
+        }
+    }
+    public void getSection() {
+        try {
+            ConnectionHelper connectionHelper = new ConnectionHelper();
+            connect = connectionHelper.connectionClass();
+            if (connect != null) {
+                Statement st = connect.createStatement();
+
+                ResultSet rs = st.executeQuery("SELECT * FROM BuildingInspectionQuestions WHERE Inspection_Title = \'"
+                        + errorStateHelper.currentInspection + "\' and Building_Name = \'" + errorStateHelper.currentBuilding + "\'");
+
+                while (rs.next()) {
+                    sectionNames.add(rs.getString("Section"));
                 }
                 st.close();
             }

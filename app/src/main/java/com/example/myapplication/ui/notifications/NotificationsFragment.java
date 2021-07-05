@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.DeleteInspection;
 import com.example.myapplication.EditProfile;
 import com.example.myapplication.R;
 import com.example.myapplication.Register;
@@ -23,6 +24,7 @@ import com.example.myapplication.errorStateHelper;
 public class NotificationsFragment extends Fragment {
     private Button registerButton;
     private Button editProfileButton;
+    private Button deleteInspectionButton;
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
 
@@ -54,6 +56,12 @@ public class NotificationsFragment extends Fragment {
                 goToEditProfile();
             }
         });
+        deleteInspectionButton=(Button) root.findViewById(R.id.DeleteInspectionSettingsPage);
+        deleteInspectionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteInspection();
+            }
+        });
 
         return root;
     }
@@ -71,6 +79,11 @@ public class NotificationsFragment extends Fragment {
     public void goToEditProfile(){
         errorStateHelper.reset();
         Intent intent2 = new Intent(getActivity(), EditProfile.class);
+        startActivity(intent2);
+    }
+    public void deleteInspection() {
+        errorStateHelper.reset();
+        Intent intent2 = new Intent(getActivity(), DeleteInspection.class);
         startActivity(intent2);
     }
 }

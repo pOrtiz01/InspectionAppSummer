@@ -182,7 +182,7 @@ public class createInspection extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
                 st.executeUpdate("INSERT INTO BuildingInspectionQuestions VALUES (" + "\'" + buildingInputVar + "\', \'"
-                        + inspectionNameInputVar + "\', " + questionNumber + ", \'" + questionInputVar + "\')");
+                        + inspectionNameInputVar + "\', " + questionNumber + ", \'" + questionInputVar + "\', \'TEST\')");
             } else {
                 ConnectionResult = "Check Connection";
             }
