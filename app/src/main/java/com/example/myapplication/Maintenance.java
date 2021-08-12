@@ -65,6 +65,16 @@ public class Maintenance extends AppCompatActivity {
     private String encodedImage;
     private Bitmap decodebitmap;
 
+    private String mail="18plog@queensu.ca";
+    private String message;
+    private String subject;
+
+
+    private String numberSubmit="^*";
+    private String answerSubmit="^*";
+    private String commentSubmit="^*";
+    private String workOrderSubmit="^*";
+    private String ImageSubmit="^*";
 
     Connection connect;
     String ConnectionResult = "";
@@ -146,6 +156,7 @@ public class Maintenance extends AppCompatActivity {
                         }
 
                     }
+                    sendEmail();
                     Intent intent= new Intent(Maintenance.this, com.example.myapplication.homePage.class);
                     startActivity(intent);
 
@@ -165,6 +176,14 @@ public class Maintenance extends AppCompatActivity {
 
 
         displayQuestion();
+    }
+
+    public void sendEmail(){
+        message=answerSubmit+numberSubmit+commentSubmit+workOrderSubmit+ImageSubmit+"^";
+        subject="IGNORE App Building Inspection Report";
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this,mail,subject,message);
+
+        javaMailAPI.execute();
     }
     public void checkError(){
         //System.out.println("CHECKING ERRORS");
@@ -310,6 +329,13 @@ public class Maintenance extends AppCompatActivity {
     }
 
     public void submitAnswers(int answer) {
+
+        answerSubmit+=answer+"*";
+        numberSubmit+=questionNumber+"*";
+        commentSubmit+=comments.getText().toString()+"*";
+        workOrderSubmit+=wordOrderInputVar+"*";
+        ImageSubmit+=encodedImage+"*";
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         try {
