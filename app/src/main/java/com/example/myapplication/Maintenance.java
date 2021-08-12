@@ -247,7 +247,7 @@ public class Maintenance extends AppCompatActivity {
             Bundle extras = data.getExtras();
             image = (Bitmap) extras.get("data");
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            test.setImageBitmap(image);
+            //test.setImageBitmap(image);
             image.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
             byteImage = byteArrayOutputStream.toByteArray();
             encodedImage = android.util.Base64.encodeToString(byteImage, android.util.Base64.DEFAULT);
@@ -258,7 +258,7 @@ public class Maintenance extends AppCompatActivity {
             Bitmap decodebitmap = BitmapFactory.decodeByteArray(
                     decodeString, 0, decodeString.length
             );
-            test.setImageBitmap(decodebitmap);
+            //test.setImageBitmap(decodebitmap);
         }
     }
 
