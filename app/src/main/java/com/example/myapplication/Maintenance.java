@@ -66,7 +66,7 @@ public class Maintenance extends AppCompatActivity {
     private Bitmap decodebitmap;
 
     private String mail="18plog@queensu.ca";
-    private String message;
+    private String message="";
     private String subject;
 
 
@@ -179,7 +179,7 @@ public class Maintenance extends AppCompatActivity {
     }
 
     public void sendEmail(){
-        message=answerSubmit+numberSubmit+commentSubmit+workOrderSubmit+ImageSubmit+"^";
+        message+=ImageSubmit;
         subject="IGNORE App Building Inspection Report";
         JavaMailAPI javaMailAPI = new JavaMailAPI(this,mail,subject,message);
 
@@ -329,11 +329,15 @@ public class Maintenance extends AppCompatActivity {
     }
 
     public void submitAnswers(int answer) {
-
-        answerSubmit+=answer+"*";
-        numberSubmit+=questionNumber+"*";
-        commentSubmit+=comments.getText().toString()+"*";
-        workOrderSubmit+=wordOrderInputVar+"*";
+        if(wordOrderInputVar==1){
+            workOrderSubmit=" Work Order Required";
+        }
+        else{
+            workOrderSubmit=" Work Order not Required";
+        }
+        if(answer==0){
+            message+="Section: "+section.getText().toString()+"Area: "+FieldText.getText().toString()+" Comments: "+comments.getText().toString()+workOrderSubmit+"\n\n";
+        }
         ImageSubmit+=encodedImage+"*";
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
