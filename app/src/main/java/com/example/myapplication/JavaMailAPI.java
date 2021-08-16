@@ -25,9 +25,9 @@ public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
     private Context mContext;
     private Session mSession;
 
-    private String mEmail;
-    private String mSubject;
-    private String mMessage;
+    public String mEmail;
+    public String mSubject;
+    public String mMessage;
 
     private ProgressDialog mProgressDialog;
 

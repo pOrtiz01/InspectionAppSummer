@@ -30,6 +30,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 public class Maintenance extends AppCompatActivity {
 
@@ -52,6 +53,8 @@ public class Maintenance extends AppCompatActivity {
 
     private ArrayList<String> fields;
     private ArrayList<String> sectionNames;
+    private ArrayList<String> Images2 = new ArrayList<String>();
+
 
     private ImageView test;
 
@@ -65,9 +68,13 @@ public class Maintenance extends AppCompatActivity {
     private String encodedImage;
     private Bitmap decodebitmap;
 
-    private String mail="18plog@queensu.ca";
-    private String message="";
+    private String mail="office@patryinc.com";
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+    private String message= currentUser.userName + " completed the inspection today at " + formatter.format(date) + "\n\n";
+    private String message2="";
     private String subject;
+    private String subject2;
 
 
     private String numberSubmit="^*";
@@ -75,6 +82,13 @@ public class Maintenance extends AppCompatActivity {
     private String commentSubmit="^*";
     private String workOrderSubmit="^*";
     private String ImageSubmit="^*";
+
+    private String currentSection="";
+    private String previousSection="";
+    private boolean first=true;
+
+    private int lengthLine;
+    private String lengthLineVar;
 
     Connection connect;
     String ConnectionResult = "";
@@ -179,11 +193,19 @@ public class Maintenance extends AppCompatActivity {
     }
 
     public void sendEmail(){
-        message+=ImageSubmit;
-        subject="IGNORE App Building Inspection Report";
+        subject="App Building Inspection Report for "+errorStateHelper.building+" Inspection : "+errorStateHelper.currentInspection;
+        subject2="IGNORE Images, " +errorStateHelper.building+"END";
+        message += "\n\nImage(s) can be found at this link: https://patry.sharepoint.com/sites/PropertyManagementTrial/7%20Photo%20%20Video%20Archive/Forms/AllItems.aspx?viewid=dce4d0f3%2D40de%2D46fe%2Dad73%2D2b23d60471ae&id=%2Fsites%2FPropertyManagementTrial%2F7%20Photo%20%20Video%20Archive%2FApp%20Images";
         JavaMailAPI javaMailAPI = new JavaMailAPI(this,mail,subject,message);
-
         javaMailAPI.execute();
+        Iterator<String> iter=Images2.iterator();
+        while(iter.hasNext()){
+            message=iter.next();
+            subject="IGNORE Images, " +errorStateHelper.building+"END";
+            javaMailAPI = new JavaMailAPI(this,mail,subject,message);
+            javaMailAPI.execute();
+
+        }
     }
     public void checkError(){
         //System.out.println("CHECKING ERRORS");
@@ -329,16 +351,42 @@ public class Maintenance extends AppCompatActivity {
     }
 
     public void submitAnswers(int answer) {
+        if(first){
+            previousSection=section.getText().toString();
+            currentSection=section.getText().toString();
+            message+="Section: "+currentSection+"\n\n";
+            first=false;
+        }
+        else{
+            currentSection=section.getText().toString();
+            if(!previousSection.equals(currentSection)){
+                message+="Section: "+currentSection+"\n\n";
+            }
+            previousSection=currentSection;
+        }
         if(wordOrderInputVar==1){
             workOrderSubmit=" Work Order Required";
         }
         else{
             workOrderSubmit=" Work Order not Required";
         }
-        if(answer==0){
-            message+="Section: "+section.getText().toString()+"Area: "+FieldText.getText().toString()+" Comments: "+comments.getText().toString()+workOrderSubmit+"\n\n";
+        if(comments.getText().toString().equals("")){
+            commentSubmit="No Comments Made";
         }
-        ImageSubmit+=encodedImage+"*";
+        else{
+            commentSubmit=comments.getText().toString();
+        }
+        if(answer==0){
+
+            lengthLineVar="Area: "+FieldText.getText().toString()+".  Comments: "+commentSubmit+","+workOrderSubmit;
+            message+=lengthLineVar+"\n\n";
+            if(encodedImage!=null){
+                System.out.println("ADDED\n\nADDEDDDDD");
+                Images2.add(encodedImage);
+            }
+        }
+
+
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
