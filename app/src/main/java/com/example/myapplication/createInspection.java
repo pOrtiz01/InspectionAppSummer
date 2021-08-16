@@ -22,10 +22,12 @@ import java.util.ArrayList;
 
 public class createInspection extends AppCompatActivity {
     private EditText inspectionName;
+    private EditText sectionInput;
     private EditText questionInput;
 
     private String inspectionNameInputVar;
     private String questionInputVar;
+    private String sectionInputVar;
     private String buildingInputVar;
 
     private Button addQuestion;
@@ -57,6 +59,7 @@ public class createInspection extends AppCompatActivity {
         inspectionNameInputVar = "";
 
         errorMessage=(TextView) findViewById(R.id.incorrectInputCreate);
+        sectionInput=(EditText) findViewById(R.id.sectionInputCreateInspection);
 
         getBuildings();
         chooseBuilding=(Spinner) findViewById(R.id.createInspectionChooseBuilding);
@@ -90,13 +93,15 @@ public class createInspection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 questionInputVar=questionInput.getText().toString();
-                if(questionInputVar.equals("")){
+                sectionInputVar=sectionInput.getText().toString();
+                if(questionInputVar.equals("")||sectionInputVar.equals("")){
                     errorMessage.setVisibility(View.VISIBLE);
-                    errorMessage.setText("Must Fill In Question");
+                    errorMessage.setText("Must Fill In Blank Fields");
                     errorStateHelper.blankQuestionCreation=true;
                 }
                 else {
                     questionInputVar = questionInput.getText().toString();
+                    sectionInputVar=sectionInput.getText().toString();
                     submitQuestion();
                     questionInput.setText("");
                     questionNumber++;
@@ -129,8 +134,9 @@ public class createInspection extends AppCompatActivity {
                     errorStateHelper.startedCreation=true;
                     questionInputVar="";
                 }
-                else if(errorStateHelper.startedCreation && !inspectionNameInputVar.equals("") && !questionInput.getText().toString().equals("")) {
+                else if(errorStateHelper.startedCreation && !inspectionNameInputVar.equals("") && !questionInput.getText().toString().equals("") && !sectionInput.getText().toString().equals("")) {
                     questionInputVar = questionInput.getText().toString();
+                    sectionInputVar = sectionInput.getText().toString();
                     submitQuestion();
                     errorStateHelper.reset();
                     Intent intent = new Intent(createInspection.this, homePage.class);
@@ -138,7 +144,7 @@ public class createInspection extends AppCompatActivity {
                 }
                 else{
                     errorMessage.setVisibility(View.VISIBLE);
-                    errorMessage.setText("Must Fill In Question");
+                    errorMessage.setText("Must Fill In Blank Fields");
                 }
 
 
@@ -182,7 +188,7 @@ public class createInspection extends AppCompatActivity {
             if (connect != null) {
                 Statement st = connect.createStatement();
                 st.executeUpdate("INSERT INTO BuildingInspectionQuestions VALUES (" + "\'" + buildingInputVar + "\', \'"
-                        + inspectionNameInputVar + "\', " + questionNumber + ", \'" + questionInputVar + "\', \'TEST\')");
+                        + inspectionNameInputVar + "\', " + questionNumber + ", \'" + questionInputVar + "\', \'"+sectionInputVar+ "\')");
             } else {
                 ConnectionResult = "Check Connection";
             }

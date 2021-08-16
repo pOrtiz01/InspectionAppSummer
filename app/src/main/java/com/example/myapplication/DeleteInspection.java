@@ -22,6 +22,7 @@ public class DeleteInspection extends AppCompatActivity {
 
     private Button deleteButton;
     private Button confirmDeleteButton;
+    private Button backButton;
 
     private String buildingInputVar;
     private String typeInputVar;
@@ -63,6 +64,15 @@ public class DeleteInspection extends AppCompatActivity {
         getBuildings();
         buildingInputVar = buildings.get(0);
 
+        backButton = (Button) findViewById(R.id.DeleteInspectionBack);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                errorStateHelper.reset();
+                Intent intent= new Intent(DeleteInspection.this, com.example.myapplication.homePage.class);
+                startActivity(intent);
+            }
+        });
 
         buildingDropdown=(Spinner) findViewById(R.id.buildingDropDownDelete);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(DeleteInspection.this, android.R.layout.simple_spinner_dropdown_item, buildings);
