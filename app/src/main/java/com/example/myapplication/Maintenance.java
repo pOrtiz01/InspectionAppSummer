@@ -168,11 +168,11 @@ public class Maintenance extends AppCompatActivity {
                         else{
                             submitAnswers(0);
                         }
-
+                        sendEmail();
+                        Intent intent= new Intent(Maintenance.this, com.example.myapplication.homePage.class);
+                        startActivity(intent);
                     }
-                    sendEmail();
-                    Intent intent= new Intent(Maintenance.this, com.example.myapplication.homePage.class);
-                    startActivity(intent);
+
 
                 }
 
@@ -238,6 +238,9 @@ public class Maintenance extends AppCompatActivity {
     public void displayQuestion(){
         FieldText.setText(fields.get(questionNumber));
         section.setText(sectionNames.get(questionNumber));
+        if(questionNumber==fields.size()-1){
+            nextQuestion.setText("Submit");
+        }
         questionNumber++;
         row1Ok.setChecked(false);
         row1NotOk.setChecked(false);

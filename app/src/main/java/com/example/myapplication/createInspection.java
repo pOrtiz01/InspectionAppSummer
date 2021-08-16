@@ -115,7 +115,8 @@ public class createInspection extends AppCompatActivity {
         submitInspection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("IT IS: " + errorStateHelper.blankQuestionCreation);
+                //System.out.println("IT IS: " + errorStateHelper.blankQuestionCreation);
+                sectionInput.setVisibility(View.VISIBLE);
                 inspectionNameInputVar = inspectionName.getText().toString();
                 if(!(errorStateHelper.startedCreation)&&(inspectionNameInputVar.equals(""))){
                     errorStateHelper.incorrectInputCreation=true;
@@ -153,6 +154,7 @@ public class createInspection extends AppCompatActivity {
         questionInput.setVisibility(View.INVISIBLE);
         submitInspection.setText("START");
         addQuestion.setVisibility(View.INVISIBLE);
+        sectionInput.setVisibility(View.INVISIBLE);
 
 
     }

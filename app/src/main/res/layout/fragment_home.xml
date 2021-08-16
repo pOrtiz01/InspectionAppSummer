@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/design_1"
-    android:scaleY=".95"
-    android:scaleX=".95"
-    android:translationY="15dp"
+
     tools:context=".ui.home.HomeFragment">
 
 
