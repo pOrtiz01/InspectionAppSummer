@@ -218,6 +218,10 @@ public class Maintenance extends AppCompatActivity {
             checkBoxError.setText("Cannot Check Both Boxes");
             checkBoxError.setVisibility(View.VISIBLE);
         }
+        else if(row1NotOk.isChecked() && comments.getText().toString().equals("")){
+            checkBoxError.setText("If not ok, please comment");
+            checkBoxError.setVisibility(View.VISIBLE);
+        }
         else{
             if(workOrderSwitch.isChecked()){
                 wordOrderInputVar=1;

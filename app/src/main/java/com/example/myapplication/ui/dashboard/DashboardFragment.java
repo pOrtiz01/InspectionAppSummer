@@ -101,6 +101,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 buildingInputVar=buildings.get(position);
+                errorStateHelper.buildingName=buildingInputVar;
                 //typeDropdown.setVisibility(View.VISIBLE);
                 getInspections();
 

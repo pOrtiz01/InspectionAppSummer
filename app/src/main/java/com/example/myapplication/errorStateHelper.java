@@ -40,8 +40,11 @@ public class errorStateHelper {
     public static boolean startedCreation=false;
     public static boolean incorrectInputCreation=true;
     public static boolean blankQuestionCreation=true;
+    public static String buildingName="";
 
     public static void reset() {
+        buildingName="";
+
         passwordErrorRegister = false;
         usernameExistsRegister = false;
         emailExistsRegister = false;

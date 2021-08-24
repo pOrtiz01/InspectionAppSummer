@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
 
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="6dp"
             android:hint="QUESTION INPUT"
             android:textColorHint="@color/blue" />
 
